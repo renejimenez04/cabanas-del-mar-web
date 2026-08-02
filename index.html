@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Cabañas Jiménez — Puerto Montt</title>
+<meta name="description" content="Cabañas acogedoras en Puerto Montt. Naturaleza, comodidad y tranquilidad a minutos de la ciudad. Reserva tu escape.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F8F6F2;
+    --text:#1F1F1F;
+    --forest:#31473A;
+    --forest-light:#3f5c4b;
+    --wood:#7A5B42;
+    --gold:#C8A15A;
+    --gold-light:#dab876;
+    --white:#FFFFFF;
+    --container:1280px;
+    --ease:cubic-bezier(.16,1,.3,1);
+    --nav-h:84px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{text-decoration:none;color:inherit}
+  ul{list-style:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+  section{position:relative}
+  .container{max-width:var(--container);margin:0 auto;padding:0 32px}
+  @media(max-width:640px){.container{padding:0 24px}}
+
+  h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.1;letter-spacing:-0.01em}
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Inter',sans-serif;font-weight:600;font-size:12.5px;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+    margin-bottom:18px;
+  }
+  .kicker::before{content:'';width:28px;height:1px;background:var(--gold)}
+  .kicker.center{margin-inline:auto}
+
+  section[id]{scroll-margin-top:var(--nav-h)}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:17px 34px;border-radius:999px;
+    font-family:'Inter',sans-serif;font-weight:600;font-size:14.5px;
+    letter-spacing:.02em;white-space:nowrap;
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease), background .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease);
+    will-change:transform;
+  }
+  .btn svg{width:18px;height:18px;flex:none}
+  .btn:hover{transform:translateY(-3px)}
+  .btn:active{transform:translateY(-1px)}
+  .btn-gold{background:var(--gold);color:#241a0d;box-shadow:0 10px 30px -10px rgba(200,161,90,.55)}
+  .btn-gold:hover{background:var(--gold-light);box-shadow:0 16px 36px -10px rgba(200,161,90,.65)}
+  .btn-glass{
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.4);
+    color:#fff;
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  }
+  .btn-glass:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.7)}
+  .btn-forest{background:var(--forest);color:#fff;box-shadow:0 10px 30px -12px rgba(49,71,58,.55)}
+  .btn-forest:hover{background:var(--forest-light)}
+  .btn-outline{background:transparent;border:1px solid rgba(31,31,31,.2);color:var(--text)}
+  .btn-outline:hover{border-color:var(--forest);background:var(--forest);color:#fff}
+  .btn-block{width:100%}
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease), transform .9s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal-d1{transition-delay:.08s}
+  .reveal-d2{transition-delay:.16s}
+  .reveal-d3{transition-delay:.24s}
+  .reveal-d4{transition-delay:.32s}
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    height:var(--nav-h);
+    display:flex;align-items:center;
+    background:transparent;
+    transition:background .5s var(--ease), box-shadow .5s var(--ease), backdrop-filter .5s var(--ease), height .4s var(--ease);
+    --nav-color:#fff;
+    --nav-color-sub:rgba(255,255,255,.82);
+  }
+  header.scrolled{
+    height:74px;
+    background:rgba(248,246,242,.86);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    box-shadow:0 1px 0 rgba(31,31,31,.07);
+    --nav-color:var(--text);
+    --nav-color-sub:rgba(31,31,31,.7);
+  }
+  .nav-inner{width:100%;display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:11px;color:var(--nav-color);transition:color .5s var(--ease)}
+  .logo svg{width:30px;height:30px;flex:none}
+  .logo-text{font-family:'Cormorant Garamond',serif;line-height:1.05}
+  .logo-text b{display:block;font-size:18.5px;font-weight:700;letter-spacing:.06em}
+  .logo-text span{display:block;font-size:11px;font-family:'Inter',sans-serif;font-weight:500;letter-spacing:.24em;color:var(--nav-color-sub)}
+
+  .nav-links{display:flex;align-items:center;gap:38px}
+  .nav-links a{
+    font-size:13.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--nav-color);position:relative;padding:4px 0;
+    transition:color .5s var(--ease), opacity .3s;
+  }
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--gold);
+    transition:width .35s var(--ease);
+  }
+  .nav-links a:hover::after{width:100%}
+  .nav-links a:hover{opacity:.85}
+
+  .nav-cta{display:flex;align-items:center;gap:22px}
+  .nav-cta .btn{padding:13px 26px;font-size:13px}
+
+  .menu-toggle{display:none;width:44px;height:44px;align-items:center;justify-content:center;color:var(--nav-color);z-index:1200}
+  .menu-toggle svg{width:24px;height:24px}
+
+  @media(max-width:940px){
+    .nav-links{display:none}
+    .nav-cta .btn-outline-mobile{display:none}
+    .menu-toggle{display:flex}
+  }
+  @media(max-width:520px){
+    .nav-cta .btn span.full{display:none}
+  }
+
+  .mobile-nav{
+    position:fixed;inset:0;z-index:1100;background:var(--forest);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;
+    opacity:0;visibility:hidden;transform:translateY(-16px);
+    transition:opacity .5s var(--ease), transform .5s var(--ease), visibility 0s linear .5s;
+  }
+  .mobile-nav.open{opacity:1;visibility:visible;transform:none;transition:opacity .5s var(--ease), transform .5s var(--ease)}
+  .mobile-nav a{font-family:'Cormorant Garamond',serif;font-size:34px;color:#fff;letter-spacing:.01em}
+  .mobile-nav .btn{margin-top:12px}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    height:100svh;min-height:640px;position:relative;
+    display:flex;align-items:center;
+    overflow:hidden;
+  }
+  .hero-media{position:absolute;inset:0;z-index:0}
+  .hero-media img{
+    width:100%;height:100%;object-fit:cover;
+    transform:scale(1.08);
+    animation:heroZoom 16s ease-out forwards;
+  }
+  @keyframes heroZoom{from{transform:scale(1.14)}to{transform:scale(1.02)}}
+  .hero-overlay{
+    position:absolute;inset:0;z-index:1;
+    background:
+      linear-gradient(180deg, rgba(20,18,14,.35) 0%, rgba(20,18,14,.28) 38%, rgba(15,14,11,.72) 82%, rgba(10,10,8,.92) 100%);
+  }
+  .hero-content{position:relative;z-index:2;width:100%;padding-top:40px}
+  .hero-content .kicker{color:var(--gold-light)}
+  .hero-content .kicker::before{background:var(--gold-light)}
+  .hero-content h1{
+    color:#fff;font-size:clamp(2.6rem,6.6vw,5.4rem);font-weight:600;
+    max-width:16em;margin-bottom:26px;
+  }
+  .hero-content h1 em{font-style:italic;color:var(--gold-light);font-weight:500}
+  .hero-content p{
+    color:rgba(255,255,255,.86);font-size:18px;max-width:520px;margin-bottom:42px;font-weight:400;
+  }
+  .hero-btns{display:flex;flex-wrap:wrap;gap:18px}
+
+  .hero-bar{
+    position:absolute;left:0;right:0;bottom:0;z-index:3;
+    padding:22px 0;
+    background:rgba(15,14,11,.35);
+    border-top:1px solid rgba(255,255,255,.14);
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  }
+  .hero-bar-inner{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px 34px;
+  }
+  .hero-feat{display:flex;align-items:center;gap:11px;color:#fff}
+  .hero-feat svg{width:19px;height:19px;color:var(--gold-light);flex:none}
+  .hero-feat span{font-size:13.5px;font-weight:500;letter-spacing:.02em;white-space:nowrap}
+  @media(max-width:900px){.hero-bar-inner{justify-content:flex-start}}
+  @media(max-width:560px){
+    .hero-bar{padding:16px 0}
+    .hero-bar-inner{gap:14px 26px}
+    .hero-feat span{font-size:12.5px}
+  }
+
+  .scroll-cue{
+    position:absolute;right:36px;bottom:120px;z-index:3;
+    display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(255,255,255,.75);
+  }
+  .scroll-cue span{writing-mode:vertical-rl;font-size:11px;letter-spacing:.24em;text-transform:uppercase}
+  .scroll-cue .line{width:1px;height:52px;background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,0));position:relative;overflow:hidden}
+  .scroll-cue .line::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--gold-light);animation:scrollLine 2.2s var(--ease) infinite}
+  @keyframes scrollLine{0%{top:-100%}60%{top:100%}100%{top:100%}}
+  @media(max-width:900px){.scroll-cue{display:none}}
+
+  /* ---------- Section generic ---------- */
+  .section{padding:130px 0}
+  @media(max-width:900px){.section{padding:96px 0}}
+  @media(max-width:560px){.section{padding:76px 0}}
+  .section-head{max-width:640px;margin-bottom:64px}
+  .section-head.center{margin-inline:auto;text-align:center}
+  .section-head h2{font-size:clamp(2.1rem,4vw,3.1rem)}
+  .section-head p{color:rgba(31,31,31,.62);font-size:16.5px;margin-top:18px}
+
+  /* ---------- About / intro split ---------- */
+  .about{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:center}
+  @media(max-width:940px){.about{grid-template-columns:1fr;gap:52px}}
+  .about-copy p{color:rgba(31,31,31,.68);font-size:16.5px;margin-bottom:28px;max-width:460px}
+  .about-list{display:flex;flex-direction:column;gap:16px;margin-bottom:38px}
+  .about-list li{display:flex;align-items:center;gap:14px;font-size:15px;font-weight:500}
+  .about-list svg{width:19px;height:19px;color:var(--gold);flex:none}
+
+  .about-gallery{
+    position:relative;display:grid;grid-template-columns:1.3fr .8fr;gap:22px;
+  }
+  .about-gallery .big{grid-row:1/3;border-radius:22px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 40px 80px -30px rgba(31,31,31,.35)}
+  .about-gallery .small{border-radius:18px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 30px 60px -24px rgba(31,31,31,.3)}
+  .about-gallery img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+  .about-gallery a:hover img, .about-gallery div:hover img{transform:scale(1.06)}
+  .about-badge{
+    position:absolute;left:-28px;bottom:-28px;z-index:4;
+    background:var(--forest);color:#fff;border-radius:18px;
+    padding:22px 26px;box-shadow:0 24px 50px -18px rgba(49,71,58,.6);
+    display:flex;flex-direction:column;gap:2px;
+  }
+  .about-badge b{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--gold-light);line-height:1}
+  .about-badge span{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+  @media(max-width:560px){.about-badge{left:14px;bottom:-20px;padding:16px 18px}.about-badge b{font-size:26px}}
+
+  /* ---------- Cabin cards ---------- */
+  .cabins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  @media(max-width:1080px){.cabins-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:700px){.cabins-grid{grid-template-columns:1fr}}
+
+  .cabin-card{
+    background:var(--white);border-radius:24px;overflow:hidden;
+    box-shadow:0 26px 60px -30px rgba(31,31,31,.22);
+    transition:transform .6s var(--ease), box-shadow .6s var(--ease);
+    display:flex;flex-direction:column;
+  }
+  .cabin-card:hover{transform:translateY(-10px);box-shadow:0 40px 80px -30px rgba(31,31,31,.3)}
+  .cabin-media{position:relative;aspect-ratio:4/3;overflow:hidden}
+  .cabin-media img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+  .cabin-card:hover .cabin-media img{transform:scale(1.08)}
+  .cabin-tag{
+    position:absolute;top:18px;left:18px;z-index:2;
+    background:rgba(248,246,242,.9);backdrop-filter:blur(8px);
+    color:var(--forest);font-size:12px;font-weight:600;letter-spacing:.04em;
+    padding:8px 16px;border-radius:999px;
+  }
+  .cabin-body{padding:30px 30px 32px;display:flex;flex-direction:column;gap:18px;flex:1}
+  .cabin-body h3{font-size:26px}
+  .cabin-meta{display:flex;gap:22px}
+  .cabin-meta div{display:flex;align-items:center;gap:8px;font-size:13.5px;color:rgba(31,31,31,.65);font-weight:500}
+  .cabin-meta svg{width:17px;height:17px;color:var(--wood)}
+  .cabin-tags{display:flex;flex-wrap:wrap;gap:8px}
+  .cabin-tags span{
+    font-size:12px;font-weight:500;color:var(--forest);
+    background:rgba(49,71,58,.08);padding:6px 12px;border-radius:999px;
+  }
+  .cabin-body .btn{margin-top:auto}
+
+  /* ---------- Gallery ---------- */
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:16px;
+  }
+  .gallery-grid a{position:relative;border-radius:16px;overflow:hidden;display:block;cursor:zoom-in}
+  .gallery-grid a::after{
+    content:'';position:absolute;inset:0;background:linear-gradient(180deg, transparent 40%, rgba(20,18,14,.55));
+    opacity:0;transition:opacity .5s var(--ease);
+  }
+  .gallery-grid a:hover::after{opacity:1}
+  .gallery-grid img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+  .gallery-grid a:hover img{transform:scale(1.1)}
+  .gallery-grid .g-cap{
+    position:absolute;left:16px;bottom:14px;z-index:2;color:#fff;font-size:13px;font-weight:500;
+    opacity:0;transform:translateY(8px);transition:opacity .45s var(--ease), transform .45s var(--ease);
+  }
+  .gallery-grid a:hover .g-cap{opacity:1;transform:none}
+  .gallery-grid a:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .gallery-grid a:nth-child(4){grid-row:span 2}
+  .gallery-grid a:nth-child(7){grid-column:span 2}
+  @media(max-width:900px){
+    .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+    .gallery-grid a:nth-child(7){grid-column:span 1}
+  }
+  @media(max-width:520px){
+    .gallery-grid{grid-template-columns:1fr;grid-auto-rows:220px}
+    .gallery-grid a:nth-child(1){grid-column:span 1;grid-row:span 1}
+  }
+
+  .lightbox{
+    position:fixed;inset:0;z-index:2000;background:rgba(10,10,8,.94);
+    display:flex;align-items:center;justify-content:center;padding:40px;
+    opacity:0;visibility:hidden;transition:opacity .4s var(--ease), visibility 0s linear .4s;
+  }
+  .lightbox.open{opacity:1;visibility:visible;transition:opacity .4s var(--ease)}
+  .lightbox img{max-width:min(1100px,90vw);max-height:86vh;border-radius:12px;box-shadow:0 40px 100px rgba(0,0,0,.5)}
+  .lightbox-close{position:absolute;top:28px;right:32px;color:#fff;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.08);transition:background .3s}
+  .lightbox-close:hover{background:rgba(255,255,255,.18)}
+  .lightbox-close svg{width:22px;height:22px}
+
+  /* ---------- Explore / map ---------- */
+  .explore{background:var(--forest);color:#fff}
+  .explore .kicker{color:var(--gold-light)}
+  .explore .kicker::before{background:var(--gold-light)}
+  .explore .section-head h2{color:#fff}
+  .explore .section-head p{color:rgba(255,255,255,.7)}
+  .explore-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:stretch}
+  @media(max-width:940px){.explore-grid{grid-template-columns:1fr;gap:40px}}
+  .place-list{display:flex;flex-direction:column}
+  .place{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    padding:22px 0;border-bottom:1px solid rgba(255,255,255,.14);
+    transition:padding-left .4s var(--ease);
+  }
+  .place:hover{padding-left:10px}
+  .place:first-child{padding-top:0}
+  .place-left{display:flex;align-items:center;gap:18px}
+  .place-icon{
+    width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.08);
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .place-icon svg{width:21px;height:21px;color:var(--gold-light)}
+  .place-name{font-family:'Cormorant Garamond',serif;font-size:22px}
+  .place-desc{font-size:13px;color:rgba(255,255,255,.6);margin-top:2px}
+  .place-time{font-size:13px;font-weight:600;color:var(--gold-light);white-space:nowrap}
+
+  .map-wrap{border-radius:24px;overflow:hidden;min-height:380px;box-shadow:0 40px 90px -30px rgba(0,0,0,.5);filter:saturate(.9)}
+  .map-wrap iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+
+  /* ---------- Testimonials ---------- */
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+  @media(max-width:940px){.reviews-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto}}
+  .review-card{
+    background:var(--white);border-radius:22px;padding:36px 32px;
+    box-shadow:0 24px 54px -30px rgba(31,31,31,.2);
+    transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+  }
+  .review-card:hover{transform:translateY(-8px);box-shadow:0 34px 70px -30px rgba(31,31,31,.26)}
+  .stars{display:flex;gap:4px;color:var(--gold);margin-bottom:18px}
+  .stars svg{width:16px;height:16px}
+  .review-card p{font-size:15.5px;color:rgba(31,31,31,.75);margin-bottom:26px;min-height:96px}
+  .review-person{display:flex;align-items:center;gap:14px}
+  .review-person img{width:46px;height:46px;border-radius:50%;object-fit:cover}
+  .review-person b{display:block;font-size:14.5px;font-weight:600}
+  .review-person span{display:block;font-size:12.5px;color:rgba(31,31,31,.55)}
+
+  /* ---------- FAQ ---------- */
+  .faq-wrap{max-width:800px;margin:0 auto}
+  .faq-item{border-bottom:1px solid rgba(31,31,31,.14)}
+  .faq-q{
+    width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;
+    padding:28px 4px;text-align:left;font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;
+  }
+  .faq-q .plus{
+    width:32px;height:32px;border-radius:50%;border:1px solid rgba(31,31,31,.2);
+    display:flex;align-items:center;justify-content:center;flex:none;position:relative;
+    transition:transform .5s var(--ease), background .3s, border-color .3s;
+  }
+  .faq-q .plus::before,.faq-q .plus::after{content:'';position:absolute;background:var(--text);transition:transform .4s var(--ease), background .3s}
+  .faq-q .plus::before{width:12px;height:1.4px}
+  .faq-q .plus::after{width:1.4px;height:12px}
+  .faq-item.open .faq-q .plus{background:var(--forest);border-color:var(--forest)}
+  .faq-item.open .faq-q .plus::before,.faq-item.open .faq-q .plus::after{background:#fff}
+  .faq-item.open .faq-q .plus::after{transform:rotate(90deg) scaleY(0)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+  .faq-a p{padding:0 4px 28px;max-width:620px;color:rgba(31,31,31,.65);font-size:15.5px}
+
+  /* ---------- CTA ---------- */
+  .cta{
+    position:relative;padding:150px 0;text-align:center;overflow:hidden;
+  }
+  .cta-media{position:absolute;inset:0;z-index:0}
+  .cta-media img{width:100%;height:100%;object-fit:cover}
+  .cta-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,14,11,.75), rgba(15,14,11,.88))}
+  .cta-content{position:relative;z-index:1;max-width:640px;margin:0 auto}
+  .cta .kicker{color:var(--gold-light);justify-content:center}
+  .cta h2{color:#fff;font-size:clamp(2.4rem,5.5vw,4rem);margin-bottom:22px}
+  .cta p{color:rgba(255,255,255,.78);font-size:17px;margin-bottom:44px}
+  @media(max-width:900px){.cta{padding:110px 0}}
+
+  /* ---------- Footer ---------- */
+  footer{background:#17201b;color:rgba(255,255,255,.72);padding:90px 0 0}
+  .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.2fr;gap:50px;padding-bottom:70px;border-bottom:1px solid rgba(255,255,255,.08)}
+  @media(max-width:940px){.footer-grid{grid-template-columns:1fr 1fr;gap:44px 30px}}
+  @media(max-width:560px){.footer-grid{grid-template-columns:1fr}}
+  .footer-brand .logo{color:#fff;margin-bottom:18px}
+  .footer-brand .logo-text span{color:rgba(255,255,255,.55)}
+  .footer-brand p{font-size:14.5px;max-width:280px;margin-bottom:22px;color:rgba(255,255,255,.55)}
+  .footer-social{display:flex;gap:12px}
+  .footer-social a{
+    width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.18);
+    display:flex;align-items:center;justify-content:center;transition:background .35s,border-color .35s,transform .35s;
+  }
+  .footer-social a svg{width:17px;height:17px}
+  .footer-social a:hover{background:var(--gold);border-color:var(--gold);color:#1F1F1F;transform:translateY(-3px)}
+  footer h4{font-family:'Inter',sans-serif;color:#fff;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:22px}
+  footer .flinks{display:flex;flex-direction:column;gap:13px}
+  footer .flinks a{font-size:14.5px;transition:color .3s,padding-left .3s}
+  footer .flinks a:hover{color:var(--gold-light);padding-left:4px}
+  .footer-contact{display:flex;flex-direction:column;gap:16px}
+  .footer-contact li{display:flex;align-items:flex-start;gap:12px;font-size:14.5px}
+  .footer-contact svg{width:18px;height:18px;color:var(--gold-light);flex:none;margin-top:1px}
+  .footer-map{border-radius:14px;overflow:hidden;height:150px;margin-top:6px;filter:grayscale(.3) saturate(.8)}
+  .footer-map iframe{width:100%;height:100%;border:0}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+    padding:26px 0;font-size:13px;color:rgba(255,255,255,.4);
+  }
+  .footer-bottom a{color:rgba(255,255,255,.55)}
+
+  /* ---------- WhatsApp floating ---------- */
+  .wa-float{
+    position:fixed;right:26px;bottom:26px;z-index:900;
+    width:60px;height:60px;border-radius:50%;background:var(--forest);color:#fff;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 18px 40px -12px rgba(49,71,58,.7);
+    transition:transform .4s var(--ease), background .3s;
+  }
+  .wa-float:hover{transform:translateY(-4px) scale(1.05);background:var(--forest-light)}
+  .wa-float svg{width:27px;height:27px}
+  .wa-float .ping{
+    position:absolute;inset:0;border-radius:50%;border:2px solid var(--gold-light);
+    animation:ping 2.4s var(--ease) infinite;
+  }
+  @keyframes ping{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.45);opacity:0}}
+
+  ::selection{background:var(--gold);color:#1F1F1F}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="siteHeader">
+  <div class="container nav-inner">
+    <a href="#inicio" class="logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/><path d="M10 20.5V14h4v6.5"/></svg>
+      <span class="logo-text"><b>CABAÑAS JIMÉNEZ</b><span>PUERTO MONTT</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#cabanas">Cabañas</a>
+      <a href="#entorno">Entorno</a>
+      <a href="#galeria">Galería</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://wa.me/56912345678?text=Hola%2C%20quiero%20reservar%20en%20Caba%C3%B1as%20Jim%C3%A9nez" target="_blank" rel="noopener" class="btn btn-gold">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.36 2 11.75c0 2.06.62 3.98 1.7 5.58L2 22l4.86-1.6a10.2 10.2 0 0 0 5.14 1.35c5.52 0 10-4.36 10-9.75S17.52 2 12 2zm0 17.7c-1.7 0-3.28-.5-4.6-1.36l-.33-.2-2.88.95.95-2.75-.22-.35A7.9 7.9 0 0 1 3.8 11.75C3.8 7.34 7.47 3.8 12 3.8s8.2 3.54 8.2 7.95-3.67 7.95-8.2 7.95zm4.5-5.96c-.24-.12-1.44-.7-1.67-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.02-.37-1.94-1.18-.72-.63-1.2-1.4-1.34-1.64-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.3-.75-1.78-.2-.47-.4-.4-.55-.41h-.47c-.16 0-.42.06-.64.3-.22.24-.84.8-.84 1.96s.86 2.28.98 2.44c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.5.58.18 1.11.16 1.53.1.47-.07 1.44-.58 1.64-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
+        <span class="full">Reservar</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#inicio" class="mnav-link">Inicio</a>
+  <a href="#cabanas" class="mnav-link">Cabañas</a>
+  <a href="#entorno" class="mnav-link">Entorno</a>
+  <a href="#galeria" class="mnav-link">Galería</a>
+  <a href="#opiniones" class="mnav-link">Opiniones</a>
+  <a href="#contacto" class="mnav-link">Contacto</a>
+  <a href="https://wa.me/56912345678" target="_blank" rel="noopener" class="btn btn-gold">Reservar por WhatsApp</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <div class="hero-media">
+    <img id="heroImg" src="https://images.unsplash.com/photo-1518602164578-cd0074062767?auto=format&fit=crop&w=1920&q=80" alt="Cabaña moderna al atardecer en Puerto Montt">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <p class="kicker">Descansa &nbsp;•&nbsp; Respira &nbsp;•&nbsp; Disfruta</p>
+    <h1 class="reveal in">Cabañas acogedoras<br>en <em>Puerto Montt</em></h1>
+    <p class="reveal in reveal-d1">Naturaleza, comodidad y tranquilidad para desconectarte. Un refugio de madera y silencio, a minutos de la ciudad.</p>
+    <div class="hero-btns reveal in reveal-d2">
+      <a href="https://wa.me/56912345678?text=Hola%2C%20quiero%20reservar%20en%20Caba%C3%B1as%20Jim%C3%A9nez" target="_blank" rel="noopener" class="btn btn-gold">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.36 2 11.75c0 2.06.62 3.98 1.7 5.58L2 22l4.86-1.6a10.2 10.2 0 0 0 5.14 1.35c5.52 0 10-4.36 10-9.75S17.52 2 12 2zm0 17.7c-1.7 0-3.28-.5-4.6-1.36l-.33-.2-2.88.95.95-2.75-.22-.35A7.9 7.9 0 0 1 3.8 11.75C3.8 7.34 7.47 3.8 12 3.8s8.2 3.54 8.2 7.95-3.67 7.95-8.2 7.95zm4.5-5.96c-.24-.12-1.44-.7-1.67-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.02-.37-1.94-1.18-.72-.63-1.2-1.4-1.34-1.64-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.3-.75-1.78-.2-.47-.4-.4-.55-.41h-.47c-.16 0-.42.06-.64.3-.22.24-.84.8-.84 1.96s.86 2.28.98 2.44c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.5.58.18 1.11.16 1.53.1.47-.07 1.44-.58 1.64-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
+        Reservar por WhatsApp
+      </a>
+      <a href="#cabanas" class="btn btn-glass">Ver Cabañas</a>
+    </div>
+  </div>
+
+  <div class="scroll-cue"><span>Scroll</span><div class="line"></div></div>
+
+  <div class="hero-bar">
+    <div class="container hero-bar-inner">
+      <div class="hero-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12.5a11 11 0 0 1 14 0M8 15.8a6.6 6.6 0 0 1 8 0M11.3 19a2 2 0 0 1 1.4 0"/><circle cx="12" cy="19.3" r=".6" fill="currentColor"/></svg><span>Wifi</span></div>
+      <div class="hero-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M9 8h4.5a2.5 2.5 0 0 1 0 5H9V8zm0 5v5"/></svg><span>Estacionamiento</span></div>
+      <div class="hero-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V10a4 4 0 0 1 8 0M4 14h8M16 3v7M13 6h6M16 21v-7a3 3 0 0 1 6 0v7"/></svg><span>Cocina equipada</span></div>
+      <div class="hero-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c2 2.5 3 4.3 3 6a3 3 0 1 1-6 0c0-1.7 1-3.5 3-6z"/><path d="M5 21c1-4 3-6 7-6s6 2 7 6"/></svg><span>Quincho</span></div>
+      <div class="hero-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 6 12h4l-3 8 9-11h-4l3-7z"/></svg><span>Entorno natural</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="section" id="about">
+  <div class="container about">
+    <div class="about-copy reveal">
+      <p class="kicker">Tu lugar favorito</p>
+      <h2 style="font-size:clamp(2.1rem,4vw,3rem);margin-bottom:24px">Más que una cabaña.<br>Un lugar para volver.</h2>
+      <p>Diseñamos cada rincón para que el tiempo se sienta distinto: la calidez de la madera, el silencio del bosque y el confort de un hogar bien pensado. Un espacio para desconectar de la rutina y reconectar con lo importante.</p>
+      <ul class="about-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Cocina completamente equipada</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> WiFi de alta velocidad y TV por cable</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Estacionamiento privado y seguro</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Quincho y áreas verdes compartidas</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Perfectas para familias y parejas</li>
+      </ul>
+      <a href="#cabanas" class="btn btn-outline">Conócenos</a>
+    </div>
+    <div class="about-gallery reveal reveal-d1">
+      <a href="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80" class="big lightbox-trigger" data-caption="Living con vista al bosque">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Living de cabaña con vista al bosque" loading="lazy">
+      </a>
+      <a href="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80" class="small lightbox-trigger" data-caption="Dormitorio principal">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=700&q=80" alt="Dormitorio acogedor" loading="lazy">
+      </a>
+      <a href="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=1200&q=80" class="small lightbox-trigger" data-caption="Detalle de madera">
+        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=700&q=80" alt="Interior cálido de cabaña" loading="lazy">
+      </a>
+      <div class="about-badge"><b>+8 años</b><span>Recibiendo familias</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CABAÑAS ================= -->
+<section class="section" id="cabanas" style="background:#f2efe8">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="kicker center">Tipos de cabañas</p>
+      <h2>Elige tu refugio</h2>
+      <p>Tres estilos, un mismo estándar de comodidad y calidez. Encuentra la cabaña perfecta para tu escapada.</p>
+    </div>
+    <div class="cabins-grid">
+      <div class="cabin-card reveal">
+        <div class="cabin-media">
+          <span class="cabin-tag">Hasta 4 personas</span>
+          <img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=900&q=80" alt="Cabaña Bosque" loading="lazy">
+        </div>
+        <div class="cabin-body">
+          <h3>Cabaña Bosque</h3>
+          <div class="cabin-meta">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="7" r="3"/><path d="M2 21v-1a6 6 0 0 1 12 0v1"/><circle cx="17" cy="8" r="2.4"/><path d="M15.5 21v-.6a4.5 4.5 0 0 1 6.5-4"/></svg>2–4 personas</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>45 m²</div>
+          </div>
+          <div class="cabin-tags">
+            <span>Wifi</span><span>Cocina equipada</span><span>Estacionamiento</span><span>Calefacción a leña</span>
+          </div>
+          <a href="https://wa.me/56912345678?text=Hola%2C%20quiero%20reservar%20la%20Caba%C3%B1a%20Bosque" target="_blank" rel="noopener" class="btn btn-forest btn-block">Reservar</a>
+        </div>
+      </div>
+
+      <div class="cabin-card reveal reveal-d1">
+        <div class="cabin-media">
+          <span class="cabin-tag">Hasta 6 personas</span>
+          <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80" alt="Cabaña Lago" loading="lazy">
+        </div>
+        <div class="cabin-body">
+          <h3>Cabaña Lago</h3>
+          <div class="cabin-meta">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="7" r="3"/><path d="M2 21v-1a6 6 0 0 1 12 0v1"/><circle cx="17" cy="8" r="2.4"/><path d="M15.5 21v-.6a4.5 4.5 0 0 1 6.5-4"/></svg>4–6 personas</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>65 m²</div>
+          </div>
+          <div class="cabin-tags">
+            <span>Wifi</span><span>Terraza amplia</span><span>Vista parcial al lago</span><span>TV cable</span>
+          </div>
+          <a href="https://wa.me/56912345678?text=Hola%2C%20quiero%20reservar%20la%20Caba%C3%B1a%20Lago" target="_blank" rel="noopener" class="btn btn-forest btn-block">Reservar</a>
+        </div>
+      </div>
+
+      <div class="cabin-card reveal reveal-d2">
+        <div class="cabin-media">
+          <span class="cabin-tag">Hasta 8 personas</span>
+          <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=80" alt="Cabaña Cumbre" loading="lazy">
+        </div>
+        <div class="cabin-body">
+          <h3>Cabaña Cumbre</h3>
+          <div class="cabin-meta">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="7" r="3"/><path d="M2 21v-1a6 6 0 0 1 12 0v1"/><circle cx="17" cy="8" r="2.4"/><path d="M15.5 21v-.6a4.5 4.5 0 0 1 6.5-4"/></svg>6–8 personas</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>90 m²</div>
+          </div>
+          <div class="cabin-tags">
+            <span>Dos pisos</span><span>Quincho privado</span><span>Tinaja</span><span>Estacionamiento</span>
+          </div>
+          <a href="https://wa.me/56912345678?text=Hola%2C%20quiero%20reservar%20la%20Caba%C3%B1a%20Cumbre" target="_blank" rel="noopener" class="btn btn-forest btn-block">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALERÍA ================= -->
+<section class="section" id="galeria">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="kicker center">Galería</p>
+      <h2>Un vistazo al refugio</h2>
+      <p>Cada imagen cuenta una parte de la experiencia: madera, luz natural y silencio.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <a class="lightbox-trigger" data-caption="Cabaña al atardecer" href="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=800&q=80" alt="Cabaña al atardecer" loading="lazy"><span class="g-cap">Atardecer en el bosque</span></a>
+      <a class="lightbox-trigger" data-caption="Living interior" href="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80" alt="Living interior" loading="lazy"><span class="g-cap">Living principal</span></a>
+      <a class="lightbox-trigger" data-caption="Dormitorio" href="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=700&q=80" alt="Dormitorio" loading="lazy"><span class="g-cap">Dormitorio</span></a>
+      <a class="lightbox-trigger" data-caption="Vista al lago" href="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=700&q=80" alt="Vista al lago" loading="lazy"><span class="g-cap">Lago Llanquihue</span></a>
+      <a class="lightbox-trigger" data-caption="Cocina equipada" href="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=700&q=80" alt="Cocina equipada" loading="lazy"><span class="g-cap">Cocina equipada</span></a>
+      <a class="lightbox-trigger" data-caption="Exterior de noche" href="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?auto=format&fit=crop&w=700&q=80" alt="Cabaña iluminada de noche" loading="lazy"><span class="g-cap">Noche en la cabaña</span></a>
+      <a class="lightbox-trigger" data-caption="Naturaleza y bosque" href="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=900&q=80" alt="Montañas del sur de Chile" loading="lazy"><span class="g-cap">Entorno natural</span></a>
+      <a class="lightbox-trigger" data-caption="Quincho exterior" href="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=700&q=80" alt="Fogata exterior" loading="lazy"><span class="g-cap">Quincho y fogata</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- ================= ENTORNO ================= -->
+<section class="section explore" id="entorno">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="kicker">Naturaleza que enamora</p>
+      <h2>Descubre Puerto Montt</h2>
+      <p>Playas, volcanes, lagos y cultura. Vive la experiencia del sur de Chile desde un lugar único.</p>
+    </div>
+    <div class="explore-grid">
+      <div class="place-list reveal reveal-d1">
+        <div class="place">
+          <div class="place-left">
+            <div class="place-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 17c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0M2 12h20"/><path d="M12 12V4l4 3"/></svg></div>
+            <div><div class="place-name">Lago Llanquihue</div><div class="place-desc">Uno de los lagos más grandes de Chile</div></div>
+          </div>
+          <div class="place-time">10 min</div>
+        </div>
+        <div class="place">
+          <div class="place-left">
+            <div class="place-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c2.2 3 3.4 5.4 3.4 7.6a3.4 3.4 0 1 1-6.8 0C8.6 8.4 9.8 6 12 3z"/><path d="M4 21c1.3-5 4-7.5 8-7.5s6.7 2.5 8 7.5"/></svg></div>
+            <div><div class="place-name">Volcán Osorno</div><div class="place-desc">Vistas panorámicas y senderismo</div></div>
+          </div>
+          <div class="place-time">1 h 10 min</div>
+        </div>
+        <div class="place">
+          <div class="place-left">
+            <div class="place-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></div>
+            <div><div class="place-name">Puerto Varas</div><div class="place-desc">Arquitectura alemana y costanera</div></div>
+          </div>
+          <div class="place-time">25 min</div>
+        </div>
+        <div class="place">
+          <div class="place-left">
+            <div class="place-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 10 12 3l9 7M5 10v10h14V10M9 20v-6h6v6"/></svg></div>
+            <div><div class="place-name">Angelmó</div><div class="place-desc">Mercado costero y gastronomía local</div></div>
+          </div>
+          <div class="place-time">15 min</div>
+        </div>
+        <div class="place">
+          <div class="place-left">
+            <div class="place-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2 6 12h4l-3 8 9-11h-4l3-7z"/></svg></div>
+            <div><div class="place-name">Parque Alerce Andino</div><div class="place-desc">Bosque nativo y senderos milenarios</div></div>
+          </div>
+          <div class="place-time">45 min</div>
+        </div>
+      </div>
+      <div class="map-wrap reveal reveal-d2">
+        <iframe src="https://maps.google.com/maps?q=Puerto%20Montt%2C%20Chile&t=&z=11&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de Puerto Montt"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OPINIONES ================= -->
+<section class="section" id="opiniones">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="kicker center">Opiniones</p>
+      <h2>Lo que dicen nuestros huéspedes</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+        </div>
+        <p>"Un lugar mágico. La cabaña estaba impecable y el silencio del bosque nos ayudó a desconectar de verdad. Volveremos sin duda."</p>
+        <div class="review-person">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80" alt="Camila R." loading="lazy">
+          <div><b>Camila R.</b><span>Santiago, Chile</span></div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-d1">
+        <div class="stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+        </div>
+        <p>"Excelente atención de principio a fin. La cabaña Lago tiene una vista espectacular y el quincho fue perfecto para un asado en familia."</p>
+        <div class="review-person">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Diego M." loading="lazy">
+          <div><b>Diego M.</b><span>Concepción, Chile</span></div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-d2">
+        <div class="stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+        </div>
+        <p>"Reservamos por WhatsApp y todo fue súper fácil. La cabaña Cumbre es enorme, perfecta para ir con amigos. Ubicación inmejorable."</p>
+        <div class="review-person">
+          <img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?auto=format&fit=crop&w=200&q=80" alt="Francisca P." loading="lazy">
+          <div><b>Francisca P.</b><span>Temuco, Chile</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section" id="faq" style="background:#f2efe8">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="kicker center">Preguntas frecuentes</p>
+      <h2>¿Tienes dudas?</h2>
+    </div>
+    <div class="faq-wrap reveal">
+      <div class="faq-item open">
+        <button class="faq-q"><span>¿Cuál es el horario de check-in y check-out?</span><span class="plus"></span></button>
+        <div class="faq-a"><p>El check-in es desde las 16:00 hrs y el check-out hasta las 12:00 hrs. Si necesitas un horario especial, contáctanos y lo coordinamos según disponibilidad.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Las cabañas admiten mascotas?</span><span class="plus"></span></button>
+        <div class="faq-a"><p>Sí, algunas de nuestras cabañas son pet-friendly. Cuéntanos con anticipación para asignarte la cabaña adecuada.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Qué distancia hay del aeropuerto y del centro de Puerto Montt?</span><span class="plus"></span></button>
+        <div class="faq-a"><p>Estamos a 20 minutos del Aeropuerto El Tepual y a 15 minutos del centro de Puerto Montt, en un entorno tranquilo rodeado de naturaleza.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Necesito llevar ropa de cama y toallas?</span><span class="plus"></span></button>
+        <div class="faq-a"><p>No, todas nuestras cabañas incluyen ropa de cama, toallas y artículos de aseo básicos para tu estadía.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Tienen estacionamiento privado?</span><span class="plus"></span></button>
+        <div class="faq-a"><p>Sí, cada cabaña cuenta con su propio espacio de estacionamiento privado y seguro dentro del complejo.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Cuál es la política de cancelación?</span><span class="plus"></span></button>
+        <div class="faq-a"><p>Cancelaciones con más de 7 días de anticipación tienen devolución completa. Escríbenos por WhatsApp para más detalles sobre tu reserva.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+<section class="cta" id="reservar">
+  <div class="cta-media"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1920&q=80" alt="Amanecer en el sur de Chile"></div>
+  <div class="container cta-content reveal">
+    <p class="kicker">Tu escape te espera</p>
+    <h2>¿Listo para desconectarte?</h2>
+    <p>Reserva hoy mismo y comienza a contar los días para tu próxima escapada a Puerto Montt.</p>
+    <a href="https://wa.me/56912345678?text=Hola%2C%20quiero%20reservar%20en%20Caba%C3%B1as%20Jim%C3%A9nez" target="_blank" rel="noopener" class="btn btn-gold" style="padding:20px 44px;font-size:16px">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.36 2 11.75c0 2.06.62 3.98 1.7 5.58L2 22l4.86-1.6a10.2 10.2 0 0 0 5.14 1.35c5.52 0 10-4.36 10-9.75S17.52 2 12 2zm0 17.7c-1.7 0-3.28-.5-4.6-1.36l-.33-.2-2.88.95.95-2.75-.22-.35A7.9 7.9 0 0 1 3.8 11.75C3.8 7.34 7.47 3.8 12 3.8s8.2 3.54 8.2 7.95-3.67 7.95-8.2 7.95zm4.5-5.96c-.24-.12-1.44-.7-1.67-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.02-.37-1.94-1.18-.72-.63-1.2-1.4-1.34-1.64-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.3-.75-1.78-.2-.47-.4-.4-.55-.41h-.47c-.16 0-.42.06-.64.3-.22.24-.84.8-.84 1.96s.86 2.28.98 2.44c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.5.58.18 1.11.16 1.53.1.47-.07 1.44-.58 1.64-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
+      Reservar por WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer id="contacto">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#inicio" class="logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/><path d="M10 20.5V14h4v6.5"/></svg>
+          <span class="logo-text"><b>CABAÑAS JIMÉNEZ</b><span>PUERTO MONTT</span></span>
+        </a>
+        <p>Naturaleza, comodidad y tranquilidad a minutos de la ciudad. Tu escape perfecto en el sur de Chile.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://wa.me/56912345678" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.36 2 11.75c0 2.06.62 3.98 1.7 5.58L2 22l4.86-1.6a10.2 10.2 0 0 0 5.14 1.35c5.52 0 10-4.36 10-9.75S17.52 2 12 2z"/></svg></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 3h-2a5 5 0 0 0-5 5v2H6v4h2v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <div class="flinks">
+          <a href="#inicio">Inicio</a>
+          <a href="#cabanas">Cabañas</a>
+          <a href="#entorno">Entorno</a>
+          <a href="#galeria">Galería</a>
+          <a href="#opiniones">Opiniones</a>
+          <a href="#faq">Preguntas frecuentes</a>
+        </div>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="footer-contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 4H4v16l4-4h12z"/></svg>Camino a Pargua km 12, Puerto Montt</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C6.48 2 2 6.36 2 11.75c0 2.06.62 3.98 1.7 5.58L2 22l4.86-1.6a10.2 10.2 0 0 0 5.14 1.35c5.52 0 10-4.36 10-9.75S17.52 2 12 2z"/></svg>+56 9 1234 5678</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18v12H3zM3 6l9 7 9-7"/></svg>contacto@cabanasjimenez.cl</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ubicación</h4>
+        <div class="footer-map">
+          <iframe src="https://maps.google.com/maps?q=Puerto%20Montt%2C%20Chile&t=&z=10&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación Cabañas Jiménez"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Cabañas Jiménez. Todos los derechos reservados.</span>
+      <span>Diseñado con calidez en Puerto Montt, Chile</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/56912345678?text=Hola%2C%20quiero%20reservar%20en%20Caba%C3%B1as%20Jim%C3%A9nez" target="_blank" rel="noopener" class="wa-float" aria-label="Reservar por WhatsApp">
+  <span class="ping"></span>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.36 2 11.75c0 2.06.62 3.98 1.7 5.58L2 22l4.86-1.6a10.2 10.2 0 0 0 5.14 1.35c5.52 0 10-4.36 10-9.75S17.52 2 12 2zm0 17.7c-1.7 0-3.28-.5-4.6-1.36l-.33-.2-2.88.95.95-2.75-.22-.35A7.9 7.9 0 0 1 3.8 11.75C3.8 7.34 7.47 3.8 12 3.8s8.2 3.54 8.2 7.95-3.67 7.95-8.2 7.95zm4.5-5.96c-.24-.12-1.44-.7-1.67-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.02-.37-1.94-1.18-.72-.63-1.2-1.4-1.34-1.64-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.3-.75-1.78-.2-.47-.4-.4-.55-.41h-.47c-.16 0-.42.06-.64.3-.22.24-.84.8-.84 1.96s.86 2.28.98 2.44c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.5.58.18 1.11.16 1.53.1.47-.07 1.44-.58 1.64-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
+</a>
+
+<script>
+  // Header scroll state
+  const header = document.getElementById('siteHeader');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 60);
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Mobile nav
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  const openIcon = '<path d="M3 6h18M3 12h18M3 18h18"/>';
+  const closeIcon = '<path d="M6 6l12 12M18 6 6 18"/>';
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    menuToggle.querySelector('svg').innerHTML = isOpen ? closeIcon : openIcon;
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    menuToggle.querySelector('svg').innerHTML = openIcon;
+    document.body.style.overflow = '';
+  }));
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:.15, rootMargin:'0px 0px -60px 0px'});
+  revealEls.forEach(el => io.observe(el));
+
+  // Hero parallax
+  const heroImg = document.getElementById('heroImg');
+  let ticking = false;
+  document.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (y < window.innerHeight) {
+          heroImg.style.transform = `translateY(${y * 0.28}px) scale(${1.02 + y*0.00012})`;
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    if (item.classList.contains('open')) a.style.maxHeight = a.scrollHeight + 'px';
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(other => {
+        if (other !== item) {
+          other.classList.remove('open');
+          other.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      item.classList.toggle('open', !isOpen);
+      a.style.maxHeight = !isOpen ? a.scrollHeight + 'px' : null;
+    });
+  });
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.lightbox-trigger').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      lightboxImg.src = trigger.getAttribute('href');
+      lightboxImg.alt = trigger.dataset.caption || '';
+      lightbox.classList.add('open');
+    });
+  });
+  const closeLightbox = () => lightbox.classList.remove('open');
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
