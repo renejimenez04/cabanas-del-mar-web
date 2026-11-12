@@ -5,13 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Cabañas del Mar | Arriendo diario y mensual en Puerto Montt</title>
 <meta name="description" content="Cabañas equipadas en el centro de Puerto Montt, a pasos del Terminal de Buses. Wi-Fi, cocina y estacionamiento en recinto cerrado. Arriendo diario y mensual. Consulta disponibilidad por WhatsApp.">
-<meta name="theme-color" content="#0E3A66">
+<meta name="theme-color" content="#0B2447">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
 <meta property="og:title" content="Cabañas del Mar | Arriendo diario y mensual en Puerto Montt">
 <meta property="og:description" content="Cabañas equipadas a pasos del Terminal de Buses de Puerto Montt, con Wi-Fi y estacionamiento. Consulta disponibilidad por WhatsApp.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E3A66'/%3E%3Cpath d='M10 36l22-18 22 18v14H10z' fill='%23EBD9C3'/%3E%3Crect x='27' y='38' width='10' height='12' fill='%239C6B3E'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B2447'/%3E%3Cpath d='M10 36l22-18 22 18v14H10z' fill='%23fff'/%3E%3Crect x='27' y='38' width='10' height='12' fill='%231F5BD8'/%3E%3C/svg%3E">
 <link rel="preload" as="image" href="fotos/fachada-azul.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap">
 
 <script type="application/ld+json">
 {
@@ -36,229 +39,249 @@
 
 <style>
 :root{
-  --blue:#0E3A66; --blue-d:#092746; --blue-l:#E4ECF5;
-  --wood:#9C6B3E; --wood-d:#7A5129; --wood-l:#EFE2D0;
-  --cream:#FBF8F3; --white:#fff;
-  --ink:#1D2733; --muted:#566070; --line:#E3DACB;
-  --wa:#128C4A; --wa-d:#0D6F3A;
-  --r:16px;
-  --shadow:0 10px 30px rgba(14,58,102,.12);
-  --head:ui-serif,Georgia,"Times New Roman",serif;
-  --body:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --navy:#0B2447; --navy-d:#071A33;
+  --accent:#1F5BD8; --accent-d:#1748B0;
+  --bg:#F6F8FB; --white:#fff;
+  --ink:#0B2447; --muted:#51617A; --line:#DDE3EC;
+  --r:14px;
+  --font:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:68px}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:16px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;font-family:var(--body);font-size:17px;line-height:1.6;color:var(--ink);background:var(--cream);padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+body{margin:0;font-family:var(--font);font-size:17px;line-height:1.6;color:var(--ink);background:var(--bg);padding-bottom:calc(84px + env(safe-area-inset-bottom))}
 img{display:block;max-width:100%;height:auto}
-a{color:var(--blue)}
-h1,h2,h3{font-family:var(--head);line-height:1.18;margin:0 0 .5em;color:var(--blue-d);font-weight:700}
-h1{font-size:clamp(2rem,7.2vw,3.4rem)}
-h2{font-size:clamp(1.65rem,5vw,2.3rem)}
-h3{font-size:1.25rem}
+a{color:var(--accent)}
+h1,h2,h3{margin:0 0 .5em;line-height:1.15;font-weight:700;letter-spacing:-.02em;color:var(--navy)}
+h2{font-size:clamp(1.7rem,4.6vw,2.4rem)}
+h3{font-size:1.2rem;letter-spacing:-.01em}
 p{margin:0 0 1em}
 .wrap{width:min(1120px,100% - 32px);margin-inline:auto}
-section{padding:56px 0}
-.eyebrow{display:inline-block;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--wood-d);margin-bottom:.6rem}
-.lead{font-size:1.08rem;color:var(--muted);max-width:60ch}
-.icon{width:22px;height:22px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+section.block{padding:64px 0}
+.lead{font-size:1.08rem;color:var(--muted);max-width:58ch}
+.icon{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
-/* Botones */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:50px;padding:.8rem 1.35rem;border-radius:999px;border:2px solid transparent;font:inherit;font-weight:700;font-size:1rem;text-decoration:none;cursor:pointer;transition:transform .15s,background .15s,box-shadow .15s}
+/* Botones: un solo color de acento */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:52px;padding:.8rem 1.5rem;border-radius:12px;border:2px solid transparent;font:inherit;font-weight:600;font-size:1.02rem;text-decoration:none;cursor:pointer;transition:background .15s,transform .15s}
 .btn:active{transform:translateY(1px)}
-.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #F2B24C;outline-offset:2px}
-.btn-primary{background:var(--blue);color:#fff}
-.btn-primary:hover{background:var(--blue-d)}
-.btn-wa{background:var(--wa);color:#fff}
-.btn-wa:hover{background:var(--wa-d)}
-.btn-ghost{background:#fff;color:var(--blue);border-color:var(--blue)}
-.btn-ghost:hover{background:var(--blue-l)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #F5B942;outline-offset:2px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-d)}
+.btn-outline{background:#fff;color:var(--navy);border-color:var(--line)}
+.btn-outline:hover{border-color:var(--navy)}
 .btn-block{width:100%}
 
-/* Cabecera */
-.top{position:sticky;top:0;z-index:30;background:rgba(251,248,243,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
-.brand{font-family:var(--head);font-weight:700;font-size:1.25rem;color:var(--blue-d);text-decoration:none}
-.brand span{color:var(--wood)}
-.nav{display:none;gap:26px}
-.nav a{text-decoration:none;color:var(--ink);font-weight:600;font-size:.95rem}
-.nav a:hover{color:var(--wood-d)}
-.top .btn{min-height:42px;padding:.4rem 1rem;font-size:.92rem}
+/* ---------- Portada ---------- */
+/* Móvil: marca → foto con titular → botón → tarjetas. Escritorio: foto a todo el ancho con todo encima. */
+.hero{
+  display:grid;
+  grid-template-columns:[full-start] 16px [c-start] minmax(0,1fr) [c-end] 16px [full-end];
+  background:var(--bg);
+}
+.nav{grid-column:full-start / full-end;grid-row:1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:var(--navy);color:#fff}
+.brand{font-weight:700;font-size:1.15rem;color:#fff;text-decoration:none;letter-spacing:-.01em}
+.nav ul{display:flex;gap:18px;margin:0;padding:0;list-style:none}
+.nav ul a{color:#fff;text-decoration:none;font-weight:500;font-size:.95rem}
+.nav ul a:hover{text-decoration:underline;text-underline-offset:4px}
+.photo{grid-column:full-start / full-end;grid-row:2;position:relative;height:min(118vw,480px);overflow:hidden;background:var(--navy-d)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,26,51,0) 0%,rgba(7,26,51,0) 40%,rgba(7,26,51,.62) 68%,rgba(7,26,51,.94) 100%)}
+.copy{grid-column:c-start / c-end;grid-row:2;align-self:end;position:relative;z-index:1;padding-bottom:22px;color:#fff}
+.copy h1{font-size:clamp(1.65rem,7.4vw,2.1rem);line-height:1.12;margin:0 0 .35em;color:#fff;letter-spacing:-.025em}
+.copy p{margin:0;font-size:1.05rem;color:#E6EDF8}
+.cta{grid-column:c-start / c-end;grid-row:3;margin-top:18px}
+.cards{grid-column:c-start / c-end;grid-row:4;display:grid;gap:12px;margin:18px 0 8px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.services{display:flex;justify-content:space-between;gap:12px;list-style:none;margin:0;padding:0 4px}
+.services li{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:.86rem;font-weight:600;line-height:1.25;color:var(--navy)}
+.services .icon{width:24px;height:24px;color:var(--accent)}
+.info{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.info b{font-size:.98rem;color:var(--navy)}
+.route{display:inline-flex;align-items:center;gap:.4rem;font-weight:600;font-size:.98rem;text-decoration:none;color:var(--accent);min-height:44px}
+.route:hover{text-decoration:underline;text-underline-offset:4px}
 
-/* Portada */
-.hero{position:relative;color:#fff;min-height:calc(100svh - 64px);display:flex;align-items:flex-end;padding:0;overflow:hidden;background:var(--blue-d)}
-.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,39,70,.15) 0%,rgba(9,39,70,.35) 38%,rgba(9,39,70,.9) 100%)}
-.hero-copy{position:relative;z-index:1;padding:40px 0 44px}
-.hero h1{color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.35);max-width:15ch}
-.hero p.sub{font-size:1.15rem;max-width:34ch;margin-bottom:1.5rem;color:#F4EEE4}
-.hero .cta{display:flex;flex-direction:column;gap:12px}
-.hero .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.85)}
-.hero .btn-ghost:hover{background:rgba(255,255,255,.14)}
-.badges{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 1.2rem;padding:0;list-style:none}
-.badges li{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:.25rem .8rem;font-size:.88rem;font-weight:600}
+@media (min-width:600px){
+  .photo{height:min(70vw,560px)}
+  .cards{grid-template-columns:1fr 1fr;align-items:stretch}
+  .services{align-content:center}
+}
 
-/* Cabañas */
-.features{display:grid;gap:14px;margin:26px 0 8px;padding:0;list-style:none}
-.features li{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px}
-.features .ic{width:44px;height:44px;border-radius:12px;background:var(--wood-l);color:var(--wood-d);display:grid;place-items:center;flex:none}
-.features b{display:block;color:var(--blue-d)}
+@media (min-width:1000px){
+  .hero{
+    grid-template-columns:[full-start] minmax(24px,1fr) [c-start] minmax(0,720px) [mid] minmax(340px,430px) [c-end] minmax(24px,1fr) [full-end];
+    grid-template-rows:auto 1fr auto auto;
+    min-height:clamp(660px,94svh,860px);
+    background:var(--navy-d);
+  }
+  .photo{grid-column:full-start / full-end;grid-row:1 / -1;height:auto}
+  .photo img{object-position:50% 52%}
+  /* Se conserva el color natural arriba; el azul marino llega desde la mitad hacia abajo */
+  .photo::after{background:linear-gradient(180deg,rgba(7,26,51,.28) 0%,rgba(7,26,51,0) 16%,rgba(7,26,51,0) 40%,rgba(7,26,51,.6) 68%,rgba(7,26,51,.95) 100%)}
+  .nav{grid-column:c-start / c-end;grid-row:1;position:relative;z-index:2;background:none;padding:26px 0 18px;border-bottom:1px solid rgba(255,255,255,.4);align-self:start}
+  .brand{font-size:1.3rem;text-shadow:0 1px 10px rgba(0,0,0,.45)}
+  .nav ul{gap:28px}
+  .nav ul a{font-size:1rem;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+  .copy{grid-column:c-start / mid;grid-row:3;padding:0 40px 0 0;position:relative;z-index:1}
+  .copy h1{font-size:clamp(2.6rem,4.4vw,3.7rem);max-width:13ch;margin-bottom:.3em}
+  .copy p{font-size:1.25rem}
+  .cta{grid-column:c-start / mid;grid-row:4;position:relative;z-index:1;margin:22px 0 56px}
+  .cta .btn{width:auto;min-width:300px;min-height:58px;font-size:1.08rem}
+  .cards{grid-column:mid / c-end;grid-row:3 / 5;align-self:end;position:relative;z-index:1;grid-template-columns:1fr;margin:0 0 56px;box-shadow:none}
+  .card{box-shadow:0 12px 32px rgba(7,26,51,.25);border:0}
+}
+
+/* ---------- Secciones ---------- */
+.features{display:grid;gap:12px;margin:28px 0 0;padding:0;list-style:none}
+.features li{display:flex;gap:14px;align-items:flex-start;padding:16px;border:1px solid var(--line);border-radius:var(--r);background:#fff}
+.features .icon{width:24px;height:24px;color:var(--accent);margin-top:2px}
+.features b{display:block;color:var(--navy);font-weight:600}
 .features span{color:var(--muted);font-size:.96rem;line-height:1.45}
+.sub-title{margin-top:48px}
 .note{font-size:.92rem;color:var(--muted)}
 
-.gallery{columns:2;column-gap:12px;margin-top:26px}
-.gallery figure{margin:0 0 12px;break-inside:avoid;position:relative;border-radius:14px;overflow:hidden;background:var(--wood-l)}
+.gallery{columns:2;column-gap:12px;margin-top:22px}
+.gallery figure{margin:0 0 12px;break-inside:avoid;position:relative;border-radius:12px;overflow:hidden;background:#E8EDF4}
 .gallery button{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
 .gallery img{width:100%;height:auto;transition:transform .35s}
-.gallery button:hover img{transform:scale(1.03)}
+.gallery button:hover img{transform:scale(1.025)}
 .gallery figcaption{position:absolute;left:8px;bottom:8px;right:8px;pointer-events:none}
-.gallery figcaption span{display:inline-block;background:rgba(9,39,70,.82);color:#fff;font-size:.82rem;font-weight:600;padding:.2rem .65rem;border-radius:999px}
-/* Espacio para reemplazar: fotografía pendiente */
-.slot{display:grid;place-items:center;text-align:center;aspect-ratio:4/3;border:2px dashed #C9B396;background:repeating-linear-gradient(45deg,#F7EFE3,#F7EFE3 12px,#F1E6D6 12px,#F1E6D6 24px);color:var(--wood-d);padding:16px;font-weight:600}
-.slot small{display:block;font-weight:500;color:var(--muted);margin-top:4px}
+.gallery figcaption span{display:inline-block;background:rgba(7,26,51,.8);color:#fff;font-size:.8rem;font-weight:500;padding:.18rem .6rem;border-radius:999px}
+.slot{display:grid;place-items:center;text-align:center;aspect-ratio:4/3;border:1.5px dashed #B6C2D4;background:#fff;color:var(--muted);padding:16px;font-weight:600}
+.slot small{display:block;font-weight:400;margin-top:2px}
 
 dialog#lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100%;height:100%}
-dialog#lb::backdrop{background:rgba(6,20,36,.92)}
+dialog#lb::backdrop{background:rgba(5,16,32,.93)}
 .lb-in{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px}
 .lb-in img{max-height:80svh;max-width:100%;width:auto;border-radius:10px;object-fit:contain}
-.lb-in p{color:#fff;margin:0;font-weight:600}
-.lb-close{position:absolute;top:12px;right:12px;width:48px;height:48px;border-radius:50%;border:0;background:#fff;color:var(--blue-d);font-size:1.6rem;line-height:1;cursor:pointer}
+.lb-in p{color:#fff;margin:0;font-weight:500}
+.lb-close{position:absolute;top:12px;right:12px;width:48px;height:48px;border-radius:50%;border:0;background:#fff;color:var(--navy);font-size:1.6rem;line-height:1;cursor:pointer}
 
-/* Modalidades */
-.band{background:var(--blue-l)}
-.cards{display:grid;gap:18px;margin-top:26px}
-.card{background:#fff;border-radius:20px;padding:26px;border:1px solid var(--line);box-shadow:var(--shadow);display:flex;flex-direction:column}
-.card .tag{align-self:flex-start;background:var(--wood-l);color:var(--wood-d);font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .7rem;border-radius:999px;margin-bottom:12px}
-.card ul{margin:0 0 1.2rem;padding-left:1.2rem;color:var(--muted)}
-.card li{margin-bottom:.35rem}
-.card .btn{margin-top:auto}
+.white{background:#fff;border-block:1px solid var(--line)}
+.plans{display:grid;gap:16px;margin-top:28px}
+.plan{border:1px solid var(--line);border-radius:var(--r);padding:26px;background:var(--bg);display:flex;flex-direction:column}
+.plan ul{margin:0 0 1.4rem;padding-left:1.1rem;color:var(--muted)}
+.plan li{margin-bottom:.3rem}
+.plan .btn{margin-top:auto}
 
-/* Ubicación */
-.loc{display:grid;gap:22px;align-items:center}
-.loc-photo{border-radius:20px;overflow:hidden;box-shadow:var(--shadow);max-height:420px}
+.loc{display:grid;gap:26px;align-items:center}
+.loc-photo{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);max-height:420px}
 .loc-photo img{width:100%;height:100%;max-height:420px;object-fit:cover;object-position:50% 45%}
-address{font-style:normal;font-size:1.15rem;font-weight:600;color:var(--blue-d);margin:0 0 1rem;line-height:1.5}
-.near{list-style:none;margin:0 0 1.4rem;padding:0;display:grid;gap:8px;color:var(--muted)}
-.near li{display:flex;gap:10px;align-items:flex-start}
-.near li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--wood);margin-top:.6em;flex:none}
+address{font-style:normal;font-size:1.15rem;font-weight:600;color:var(--navy);margin:0 0 1rem;line-height:1.5}
+.near{list-style:none;margin:0 0 1.5rem;padding:0;display:grid;gap:6px;color:var(--muted)}
+.near li::before{content:"–";margin-right:.6rem;color:var(--accent);font-weight:700}
 
-/* Formulario */
-.form-box{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow);max-width:640px}
-.fields{display:grid;gap:16px;margin:20px 0}
-label{display:block;font-weight:700;font-size:.95rem;margin-bottom:6px;color:var(--blue-d)}
-input,select{width:100%;min-height:52px;padding:.6rem .9rem;font:inherit;font-size:1rem;color:var(--ink);background:#fff;border:2px solid #CFC5B3;border-radius:12px}
-input:focus,select:focus{border-color:var(--blue)}
+.form-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;max-width:620px}
+.fields{display:grid;gap:16px;margin:0 0 18px}
+label{display:block;font-weight:600;font-size:.95rem;margin-bottom:6px;color:var(--navy)}
+input{width:100%;min-height:52px;padding:.6rem .9rem;font:inherit;font-size:1rem;color:var(--ink);background:#fff;border:1.5px solid #C5CFDD;border-radius:10px}
+input:focus{border-color:var(--accent)}
 input[aria-invalid="true"]{border-color:#B42318}
 .err{min-height:1.4em;margin:0 0 12px;color:#B42318;font-weight:600;font-size:.95rem}
 .hint{font-size:.92rem;color:var(--muted);margin:14px 0 0}
 
-/* Pie */
-footer{background:var(--blue-d);color:#DCE6F2;padding:44px 0 28px}
+footer{background:var(--navy);color:#C9D6EA;padding:48px 0 28px}
 footer h2,footer h3{color:#fff}
 .foot{display:grid;gap:26px}
 footer a{color:#fff}
 footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-footer .legal{border-top:1px solid rgba(255,255,255,.18);margin-top:30px;padding-top:16px;font-size:.88rem;color:#A9BBD0}
+footer .legal{border-top:1px solid rgba(255,255,255,.18);margin-top:30px;padding-top:16px;font-size:.88rem;color:#9FB2CE}
 
-/* WhatsApp fijo en el celular */
-.wa-bar.hide{visibility:hidden;transition:transform .25s,opacity .25s,visibility 0s .25s}
-.wa-bar{position:fixed;z-index:40;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(251,248,243,0),var(--cream) 38%);transition:transform .25s,opacity .25s}
-.wa-bar.hide{transform:translateY(120%);opacity:0;pointer-events:none}
-.wa-bar .btn{box-shadow:0 8px 22px rgba(18,140,74,.4)}
+/* WhatsApp fijo en el celular (se oculta en portada, formulario y pie) */
+.wa-bar{position:fixed;z-index:40;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(246,248,251,0),var(--bg) 38%);transition:transform .25s,opacity .25s}
+.wa-bar.hide{visibility:hidden;transform:translateY(120%);opacity:0;pointer-events:none;transition:transform .25s,opacity .25s,visibility 0s .25s}
 
 @media (min-width:700px){
   .features{grid-template-columns:repeat(2,1fr)}
   .gallery{columns:3;column-gap:14px}
   .gallery figure{margin-bottom:14px}
-  .cards{grid-template-columns:1fr 1fr}
-  .hero .cta{flex-direction:row}
+  .plans{grid-template-columns:1fr 1fr}
   .foot{grid-template-columns:1.2fr 1fr 1fr}
 }
-@media (min-width:900px){
+@media (min-width:1000px){
   body{padding-bottom:0}
-  .nav{display:flex}
   .wa-bar{display:none}
-  section{padding:80px 0}
-  .loc{grid-template-columns:1fr 1fr;gap:48px}
-  .hero{min-height:min(720px,calc(100svh - 64px))}
-  .hero::after{background:linear-gradient(90deg,rgba(9,39,70,.92) 0%,rgba(9,39,70,.7) 42%,rgba(9,39,70,.05) 78%)}
-  .hero-copy{padding:60px 0}
-  .hero h1{max-width:14ch}
-  .hero-img{object-position:50% 42%}
+  section.block{padding:96px 0}
+  .loc{grid-template-columns:1fr 1fr;gap:56px}
 }
 </style>
 </head>
 <body>
 
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="#inicio" aria-label="Cabañas del Mar, inicio">Cabañas <span>del Mar</span></a>
-    <nav class="nav" aria-label="Secciones">
-      <a href="#cabanas">Las cabañas</a>
-      <a href="#modalidades">Arriendo</a>
-      <a href="#ubicacion">Ubicación</a>
-      <a href="#disponibilidad">Disponibilidad</a>
-    </nav>
-    <a class="btn btn-wa" href="https://wa.me/56984556506?text=Hola%2C%20quisiera%20consultar%20disponibilidad%20y%20tarifa%20en%20Caba%C3%B1as%20del%20Mar." target="_blank" rel="noopener noreferrer">
+<!-- 1. PORTADA -->
+<header class="hero" id="inicio">
+  <nav class="nav" aria-label="Principal">
+    <a class="brand" href="#inicio">Cabañas del Mar</a>
+    <ul>
+      <li><a href="#cabanas">Las cabañas</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
+    </ul>
+  </nav>
+
+  <div class="photo">
+    <img src="fotos/fachada-azul.jpg" width="960" height="1280" alt="Fachada azul de las cabañas y acceso al recinto, Puerto Montt" fetchpriority="high">
+  </div>
+
+  <div class="copy">
+    <h1>Tu estadía en el centro de Puerto Montt</h1>
+    <p>A pasos del Terminal de Buses</p>
+  </div>
+
+  <div class="cta">
+    <a class="btn btn-primary btn-block" href="https://wa.me/56984556506" target="_blank" rel="noopener noreferrer">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-      WhatsApp
+      Consultar por WhatsApp
     </a>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <ul class="services" aria-label="Servicios">
+        <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>Wi-Fi</li>
+        <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9.5 17V7H13a3 3 0 0 1 0 6H9.5"/></svg>Estacionamiento</li>
+        <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/></svg>2 habitaciones</li>
+      </ul>
+    </div>
+    <div class="card info">
+      <b>Arriendo diario y mensual</b>
+      <a class="route" href="https://maps.app.goo.gl/kfrR6RCrX33shhqq5" target="_blank" rel="noopener noreferrer">Cómo llegar
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
   </div>
 </header>
 
 <main>
 
-<!-- 1. PORTADA -->
-<section class="hero" id="inicio" aria-labelledby="titulo">
-  <img class="hero-img" src="fotos/fachada-azul.jpg" width="960" height="1280" alt="Fachada azul de las cabañas bajo cielo despejado en Puerto Montt" fetchpriority="high">
-  <div class="wrap hero-copy">
-    <ul class="badges" aria-label="Destacados">
-      <li>Puerto Montt centro</li>
-      <li>Arriendo diario y mensual</li>
-    </ul>
-    <h1 id="titulo">Cabañas equipadas en el centro de Puerto Montt</h1>
-    <p class="sub">A pasos del Terminal de Buses, con Wi-Fi y estacionamiento</p>
-    <div class="cta">
-      <a class="btn btn-wa" href="#disponibilidad">Consultar disponibilidad</a>
-      <a class="btn btn-ghost" href="https://maps.app.goo.gl/kfrR6RCrX33shhqq5" target="_blank" rel="noopener noreferrer">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-        Cómo llegar
-      </a>
-    </div>
-  </div>
-</section>
-
 <!-- 2. LAS CABAÑAS -->
-<section id="cabanas" aria-labelledby="t-cabanas">
+<section class="block" id="cabanas" aria-labelledby="t-cabanas">
   <div class="wrap">
-    <span class="eyebrow">Las cabañas</span>
-    <h2 id="t-cabanas">Todo lo necesario para sentirte en casa</h2>
-    <p class="lead">Un recinto cerrado en pleno centro, pensado para parejas, familias, personas que viajan por trabajo, grupos y delegaciones.</p>
+    <h2 id="t-cabanas">Las cabañas</h2>
+    <p class="lead">Un recinto cerrado en pleno centro, para parejas, familias, personas que viajan por trabajo, grupos y delegaciones.</p>
 
     <ul class="features">
       <li>
-        <span class="ic"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/></svg></span>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/></svg>
         <div><b>Dos habitaciones</b><span>Una matrimonial y otra con camas individuales. La configuración varía según la unidad.</span></div>
       </li>
       <li>
-        <span class="ic"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></span>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
         <div><b>Cocina equipada</b><span>Para preparar tus comidas durante la estadía.</span></div>
       </li>
       <li>
-        <span class="ic"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg></span>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
         <div><b>Wi-Fi</b><span>Conexión para trabajar o descansar.</span></div>
       </li>
       <li>
-        <span class="ic"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         <div><b>Estacionamiento en recinto cerrado</b><span>Para los huéspedes, dentro del mismo complejo.</span></div>
       </li>
       <li>
-        <span class="ic"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg></span>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg>
         <div><b>No se aceptan mascotas</b><span>Lo avisamos antes para que lo tengas presente.</span></div>
       </li>
     </ul>
 
-    <h3 style="margin-top:38px">Conócelas por dentro y por fuera</h3>
+    <h3 class="sub-title">Conócelas por dentro y por fuera</h3>
     <p class="note">Toca una foto para verla en grande. Son fotos reales; la distribución puede variar de una unidad a otra.</p>
 
     <div class="gallery" id="galeria">
@@ -281,53 +304,43 @@ footer .legal{border-top:1px solid rgba(255,255,255,.18);margin-top:30px;padding
 </section>
 
 <!-- 3. ARRIENDO DIARIO Y MENSUAL -->
-<section class="band" id="modalidades" aria-labelledby="t-modalidades">
+<section class="block white" id="modalidades" aria-labelledby="t-modalidades">
   <div class="wrap">
-    <span class="eyebrow">Modalidades</span>
     <h2 id="t-modalidades">Arriendo diario o mensual</h2>
     <p class="lead">Elige según el tiempo que necesites. Las tarifas y la capacidad se consultan por WhatsApp, según las fechas y la unidad.</p>
-    <div class="cards">
-      <article class="card">
-        <span class="tag">Arriendo diario</span>
-        <h3>Para unos días en Puerto Montt</h3>
-        <p>Arriendo diario durante todo el año, con mayor disponibilidad en verano. Ideal para parejas, familias, viajes de trabajo, grupos y delegaciones.</p>
+    <div class="plans">
+      <article class="plan">
+        <h3>Arriendo diario</h3>
+        <p>Durante todo el año, con mayor disponibilidad en verano. Para parejas, familias, viajes de trabajo, grupos y delegaciones.</p>
         <ul>
           <li>Todo el año, con más disponibilidad en verano</li>
           <li>A pasos del Terminal de Buses</li>
           <li>Reservas coordinadas por WhatsApp</li>
         </ul>
-        <a class="btn btn-wa" id="btn-grupos" href="#" target="_blank" rel="noopener noreferrer">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-          Consultar para grupos o delegaciones
-        </a>
+        <a class="btn btn-primary" id="btn-grupos" href="#" target="_blank" rel="noopener noreferrer">Consultar para grupos o delegaciones</a>
       </article>
-      <article class="card">
-        <span class="tag">Arriendo mensual</span>
-        <h3>Para estadías prolongadas</h3>
-        <p>Una opción para estudiantes, trabajadores y quienes necesitan quedarse más tiempo, con cocina, Wi-Fi y estacionamiento.</p>
+      <article class="plan">
+        <h3>Arriendo mensual</h3>
+        <p>Para estudiantes, trabajadores y estadías prolongadas, con cocina, Wi-Fi y estacionamiento.</p>
         <ul>
           <li>Estudiantes y trabajadores</li>
           <li>Estadías de varias semanas o meses</li>
           <li>Condiciones y valor se conversan por WhatsApp</li>
         </ul>
-        <a class="btn btn-primary" id="btn-mensual" href="#" target="_blank" rel="noopener noreferrer">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-          Consultar arriendo mensual
-        </a>
+        <a class="btn btn-outline" id="btn-mensual" href="#" target="_blank" rel="noopener noreferrer">Consultar arriendo mensual</a>
       </article>
     </div>
   </div>
 </section>
 
 <!-- 4. UBICACIÓN -->
-<section id="ubicacion" aria-labelledby="t-ubicacion">
+<section class="block" id="ubicacion" aria-labelledby="t-ubicacion">
   <div class="wrap loc">
     <div class="loc-photo">
       <img src="fotos/pasillo-exterior.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="Acceso exterior al recinto de Cabañas del Mar">
     </div>
     <div>
-      <span class="eyebrow">Ubicación</span>
-      <h2 id="t-ubicacion">En el centro, a pasos de todo</h2>
+      <h2 id="t-ubicacion">Ubicación</h2>
       <address>Vicente Pérez Rosales 105, esquina Antonio Varas<br>Puerto Montt, Región de Los Lagos</address>
       <ul class="near">
         <li>A pasos del Terminal de Buses</li>
@@ -344,12 +357,11 @@ footer .legal{border-top:1px solid rgba(255,255,255,.18);margin-top:30px;padding
 </section>
 
 <!-- 5. DISPONIBILIDAD -->
-<section class="band" id="disponibilidad" aria-labelledby="t-disp">
+<section class="block white" id="disponibilidad" aria-labelledby="t-disp">
   <div class="wrap">
-    <span class="eyebrow">Disponibilidad</span>
     <h2 id="t-disp">Consulta fechas y tarifa</h2>
     <p class="lead">Cuéntanos cuándo quieres venir y te respondemos por WhatsApp. La reserva se confirma por ahí.</p>
-    <form class="form-box" id="form-disp" novalidate>
+    <form class="form-box" id="form-disp" novalidate style="margin-top:28px">
       <div class="fields">
         <div>
           <label for="llegada">Fecha de llegada</label>
@@ -365,7 +377,7 @@ footer .legal{border-top:1px solid rgba(255,255,255,.18);margin-top:30px;padding
         </div>
       </div>
       <p class="err" id="error" role="alert" aria-live="assertive"></p>
-      <button class="btn btn-wa btn-block" type="submit">
+      <button class="btn btn-primary btn-block" type="submit">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
         Consultar por WhatsApp
       </button>
@@ -387,7 +399,7 @@ footer .legal{border-top:1px solid rgba(255,255,255,.18);margin-top:30px;padding
       <div>
         <h3>Dirección</h3>
         <p>Vicente Pérez Rosales 105,<br>esquina Antonio Varas<br>Puerto Montt, Región de Los Lagos<br>
-        <a href="https://maps.app.goo.gl/kfrR6RCrX33shhqq5" target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a></p>
+        <a href="https://maps.app.goo.gl/kfrR6RCrX33shhqq5" target="_blank" rel="noopener noreferrer">Cómo llegar</a></p>
       </div>
       <div>
         <h3>Contacto</h3>
@@ -401,9 +413,9 @@ footer .legal{border-top:1px solid rgba(255,255,255,.18);margin-top:30px;padding
   </div>
 </footer>
 
-<!-- WhatsApp fijo en el celular (se oculta al llegar al formulario y al pie) -->
-<div class="wa-bar" id="wa-bar">
-  <a class="btn btn-wa btn-block" href="https://wa.me/56984556506?text=Hola%2C%20quisiera%20consultar%20disponibilidad%20y%20tarifa%20en%20Caba%C3%B1as%20del%20Mar." target="_blank" rel="noopener noreferrer">
+<!-- WhatsApp fijo en el celular -->
+<div class="wa-bar hide" id="wa-bar">
+  <a class="btn btn-primary btn-block" href="https://wa.me/56984556506?text=Hola%2C%20quisiera%20consultar%20disponibilidad%20y%20tarifa%20en%20Caba%C3%B1as%20del%20Mar." target="_blank" rel="noopener noreferrer">
     <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
     Escribir por WhatsApp
   </a>
@@ -423,12 +435,10 @@ footer .legal{border-top:1px solid rgba(255,255,255,.18);margin-top:30px;padding
   var WA = "https://wa.me/56984556506?text=";
   var $ = function (id) { return document.getElementById(id); };
 
-  // Enlaces de WhatsApp con mensaje
   $("btn-grupos").href = WA + encodeURIComponent("Hola, quisiera consultar por arriendo para un grupo o delegación en Cabañas del Mar. Fechas (llegada y salida): ___. Cantidad de personas: ___.");
   $("btn-mensual").href = WA + encodeURIComponent("Hola, quisiera consultar por arriendo mensual en Cabañas del Mar. Fecha de inicio: ___. Cantidad de personas: ___.");
   $("anio").textContent = new Date().getFullYear();
 
-  // Fechas: formato local AAAA-MM-DD
   function iso(d) {
     var m = d.getMonth() + 1, day = d.getDate();
     return d.getFullYear() + "-" + (m < 10 ? "0" : "") + m + "-" + (day < 10 ? "0" : "") + day;
@@ -478,13 +488,13 @@ footer .legal{border-top:1px solid rgba(255,255,255,.18);margin-top:30px;padding
     if (!w) window.location.href = url;
   });
 
-  // Barra de WhatsApp: se esconde sobre el formulario y el pie para no tapar nada
+  // Barra de WhatsApp (solo celular): visible fuera de la portada, el formulario y el pie
   var bar = $("wa-bar"), visible = {};
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { visible[en.target.id] = en.isIntersecting; });
       bar.classList.toggle("hide", !!(visible.inicio || visible.disponibilidad || visible.contacto));
-    }, { threshold: 0.35 });
+    }, { threshold: 0.3 });
     io.observe($("inicio")); io.observe($("disponibilidad")); io.observe($("contacto"));
   }
 
